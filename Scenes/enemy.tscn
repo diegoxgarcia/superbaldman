@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://buh1p8i6oh24u"]
+
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_sm8rp"]
+[ext_resource type="Texture2D" uid="uid://bg46cw0inbpgo" path="res://Assets/Enemy/got hit/frame-1.png" id="2_3d0d1"]
+[ext_resource type="Texture2D" uid="uid://q3mtjuar6m21" path="res://Assets/Enemy/got hit/frame-2.png" id="3_mfh0d"]
+[ext_resource type="Texture2D" uid="uid://b8uv84gbjj6b0" path="res://Assets/Enemy/Idle/frame-1.png" id="4_lhn5w"]
+[ext_resource type="Texture2D" uid="uid://qd8rsid0uvcp" path="res://Assets/Enemy/Idle/frame-2.png" id="5_388gg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ukphg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3d0d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfh0d")
+}],
+"loop": true,
+"name": &"got_hit",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lhn5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_388gg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onma0"]
+size = Vector2(244, 280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu0is"]
+size = Vector2(336, 236)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_sm8rp")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ukphg")
+animation = &"got_hit"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 5)
+shape = SubResource("RectangleShape2D_onma0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cu0is")
