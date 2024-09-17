@@ -269,10 +269,10 @@ animations = [{
 size = Vector2(98, 124)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ew410"]
-radius = 74.027
+radius = 64.0703
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(686, 229)
+position = Vector2(695, 237)
 script = ExtResource("1_gcmse")
 metadata/_edit_group_ = true
 
